@@ -2,7 +2,7 @@ package MultiLock;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+// added this project to Git repository
 
 public class Worker {
 
@@ -11,7 +11,7 @@ public class Worker {
 	private List<Integer> list1 = new ArrayList<Integer>();
 	private List<Integer> list2 = new ArrayList<Integer>();
 	
-	public synchronized void stage1(){
+	public void stage1(){
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
@@ -21,7 +21,7 @@ public class Worker {
 		
 	}
 	
-	public synchronized void stage2(){
+	public void stage2(){
 		try {
 			Thread.sleep(1);
 		} catch (InterruptedException e) {
