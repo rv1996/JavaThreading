@@ -7,27 +7,39 @@ import java.util.Random;
 public class Worker {
 
 	private Random random = new Random();
+
+	private Object lock1 = new Object();
+	private Object lock2 = new Object();
+
 	
 	private List<Integer> list1 = new ArrayList<Integer>();
 	private List<Integer> list2 = new ArrayList<Integer>();
 	
 	public void stage1(){
-		try {
-			Thread.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		
+		synchronized(lock1){
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			list1.add(random.nextInt());
+			
 		}
-		list1.add(random.nextInt());
+		
 		
 	}
 	
 	public void stage2(){
-		try {
-			Thread.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		synchronized(lock2){
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			list2.add(random.nextInt());
 		}
-		list2.add(random.nextInt());
+		
 		
 	}
 	

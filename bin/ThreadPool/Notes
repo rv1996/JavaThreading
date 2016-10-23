@@ -1,0 +1,18 @@
+One common type of thread pool is the fixed thread pool. 
+This type of pool always has a specified number of threads running;
+if a thread is somehow terminated while it is still in use,
+it is automatically replaced with a new thread. Tasks are submitted 
+to the pool via an internal queue, which holds extra tasks whenever
+there are more active tasks than threads.
+
+An important advantage of the fixed thread pool is that 
+applications using it degrade gracefully. To understand this,
+consider a web server application where each HTTP request is handled by a
+separate thread. If the application simply creates a new thread for every 
+new HTTP request, and the system receives more requests than it 
+can handle immediately, the application will suddenly stop responding 
+to all requests when the overhead of all those threads exceed
+the capacity of the system. With a limit on the number of the
+threads that can be created, the application will not be servicing 
+HTTP requests as quickly as they come in, but it will be servicing
+them as quickly as the system can sustain.
